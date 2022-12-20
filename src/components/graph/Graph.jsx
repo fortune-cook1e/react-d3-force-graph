@@ -135,6 +135,8 @@ export default class Graph extends React.Component {
    * transition duration to zero and clear transformation styles.
    * @returns {Object} - Focus and zoom animation properties.
    */
+
+  // Tip: 当 focusedNodeId 变化时产生的动画效果
   _generateFocusAnimationProps = () => {
     // In case an older animation was still not complete, clear previous timeout to ensure the new one is not cancelled
     if (this.state.enableFocusAnimation) {
@@ -144,7 +146,7 @@ export default class Graph extends React.Component {
 
       this.focusAnimationTimeout = setTimeout(
         () => this.setState({ enableFocusAnimation: false }),
-        this.state.config.focusAnimationDuration * 1000
+        this.state.config.focusAnimationDuration * CONST.FOCUS_ANIMATION_DURATION
       );
     }
 
@@ -309,6 +311,8 @@ export default class Graph extends React.Component {
       zoomObject.on("zoom", this._zoomed);
     }
 
+    // FixMe: 这里会出现 initialZoom 失效bug
+    // 大概原因可能和 focusedNodeId 一致：图表未绘制出来 然后无法进行放大缩小
     if (this.state.config.initialZoom !== null) {
       zoomObject.scaleTo(selector, this.state.config.initialZoom);
     }
@@ -548,6 +552,7 @@ export default class Graph extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log("rops...", this.props);
 
     if (!this.props.id) {
       throwErr(this.constructor.name, ERRORS.GRAPH_NO_ID_PROP);
@@ -643,6 +648,18 @@ export default class Graph extends React.Component {
 
     // graph zoom and drag&drop all network
     this._zoomConfig();
+
+    // init focusNodePosition
+
+    // const focusedNodeId = this.props.data.focusedNodeId;
+    // const d3FocusedNode = this.state.d3Nodes.find(node => `${node.id}` === `${focusedNodeId}`);
+    // const containerElId = `${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`;
+    // const focusTransformation =
+    //   getCenterAndZoomTransformation(d3FocusedNode, this.state.config, containerElId) || this.state.focusTransformation;
+    // this.setState(s => ({
+    //   ...s,
+    //   focusTransformation,
+    // }));
   }
 
   componentWillUnmount() {

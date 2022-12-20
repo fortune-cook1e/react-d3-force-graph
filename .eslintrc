@@ -1,0 +1,62 @@
+{
+  "extends": ["eslint:recommended"],
+  "globals": {
+    "cy": true,
+    "Cypress": true,
+    "document": true,
+    "module": true,
+    "Promise": true,
+    "Reflect": true,
+    "window": true,
+    "__dirname": true,
+    "process": true,
+    "Map": true,
+    "Set": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["standard", "promise", "react"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "camelcase": "error",
+    "keyword-spacing": "error",
+    "max-len": ["error", 120, 4, { "ignoreComments": true }],
+    "max-lines": ["error", { "max": 450, "skipComments": true }],
+    "no-nested-ternary": "error",
+    "no-useless-constructor": "error",
+    "semi": "error",
+    "require-jsdoc": 0,
+    "valid-jsdoc": [
+      "error",
+      {
+        "prefer": {
+          "arg": "param",
+          "argument": "param",
+          "class": "constructor",
+          "return": "returns",
+          "virtual": "abstract"
+        },
+        "preferType": {
+          "Boolean": "boolean",
+          "Number": "number",
+          "object": "Object",
+          "String": "string",
+          "Function": "Function"
+        },
+        "requireReturn": true,
+        "requireReturnType": true
+      }
+    ],
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "always-multiline"]
+  }
+}

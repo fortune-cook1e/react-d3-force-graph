@@ -121,6 +121,7 @@ const responseToRelationData = resData => {
       target: r.endNode,
       strokeDasharray: r.type === 0 ? 8 : 0,
     })),
+    rootId: resData.nodes[0].id,
   };
 };
 

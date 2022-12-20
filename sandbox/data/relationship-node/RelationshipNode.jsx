@@ -2,17 +2,14 @@ import React from "react";
 
 import "./index.css";
 
-const rootId = "r6c8a4JS2fFCFjtG6GtbdRYDHKnKyAys";
-
 const RelationshipNode = ({ person }) => {
   const {
-    properties: { avatar = "", name = "", count = 0, role = "" },
-    id = "",
+    properties: { avatar = "", name = "", count = 0, role = "", root = true },
   } = person;
 
   const rootClassName = clx => {
     const rootClass = clx + "_root";
-    if (id === rootId) return `${clx} ${rootClass}`;
+    if (root) return `${clx} ${rootClass}`;
     return clx;
   };
 

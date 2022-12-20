@@ -1,8 +1,8 @@
 {
-  "name": "@yunke/react-d3-graph",
+  "name": "react-d3-force-graph",
   "version": "1.1.7",
   "description": "React component to build interactive and configurable graphs with d3 effortlessly",
-  "author": "gaol07",
+  "author": "fortune_cookie",
   "license": "MIT",
   "main": "lib/index.js",
   "repository": {
@@ -13,7 +13,7 @@
     "lib"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode=development --content-base sandbox --config webpack.config.js --inline --hot --port 3002",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode=development --content-base sandbox --config webpack.config.js",
     "build:rd3g": "rm -rf dist/ && webpack --config webpack.config.dist.js -p --display-modules --optimize-minimize",
     "build:sandbox": "yarn run generate:tooltips && webpack --config webpack.config.js -p",
     "build:transpile": "babel -d lib src",
@@ -36,15 +36,18 @@
   "peerDependencies": {
     "d3": "^5.5.0",
     "react": ">=16.8.0",
-    "react-dom":">=16.8.0"
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.0",
-    "@babel/core": "7.6.0",
+    "@babel/core": "^7.20.5",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
     "babel-loader": "8.0.6",
     "classnames": "^2.3.2",
     "cross-env": "5.2.1",
@@ -59,7 +62,6 @@
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-standard": "4.0.1",
     "html-webpack-plugin": "2.30.1",
-    "http-server": "^0.12.1",
     "husky": "3.0.5",
     "jest": "24.9.0",
     "jsdoc": "^3.6.3",
@@ -68,7 +70,9 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.19.1",
     "query-string": "6.8.3",
+    "react": "17.0.2",
     "react-addons-test-utils": "15.6.2",
+    "react-dom": "17.0.2",
     "react-editable-json-tree": "2.2.1",
     "react-jsonschema-form": "1.0.4",
     "react-test-renderer": "16.9.0",
@@ -79,9 +83,7 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "3.3.8",
     "webpack-dev-server": "^3.1.14",
-    "webpack-visualizer-plugin": "0.1.11",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "webpack-visualizer-plugin": "0.1.11"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -101,5 +103,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "dependencies": {}
 }

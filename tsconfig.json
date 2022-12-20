@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "moduleResolution": "Node",
+    "strict": true,
+    "target": "ESNext",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "esnext"],
+    "baseUrl": "./"
+  },
+  "exclude": [
+    "cypress",
+    "dist",
+    "docs",
+    "gen-docs",
+    "lib",
+    "node_modules",
+    "test",
+    "sandbox/rd3g.sandbox.bundle.js",
+    "sandbox/rd3g.sandbox.bundle.js.map",
+    "webpack.config.js",
+    "webpack.config.dist.js"
+  ]
+}
