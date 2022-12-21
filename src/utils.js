@@ -190,6 +190,7 @@ function antiPick(o, props = []) {
  * @memberof utils
  */
 function debounce(fn, time) {
+  if (!fn) return;
   let timer;
 
   return function exec(...args) {

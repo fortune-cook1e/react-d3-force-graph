@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import defaultConfig from "../src/components/graph/graph.config";
-import { Graph } from "../src";
+import { Graph, GraphV2 } from "../src";
 import { loadDataset } from "./utils";
 import "./sandbox.css";
 
@@ -53,18 +53,18 @@ const SandBoxTs = (): JSX.Element => {
         height: window.innerHeight,
       },
     });
-    setReady(true);
+    // setReady(true);
   };
 
   useEffect(() => {
-    // initData();
+    initData();
   }, []);
 
   useEffect(() => {
     if (ready) {
-      // setGraphConfig(c => ({
-      //   ...c,
-      // }));
+      setGraphConfig(c => ({
+        ...c,
+      }));
       setCKey(c => c++);
     }
   }, [ready]);
@@ -80,9 +80,10 @@ const SandBoxTs = (): JSX.Element => {
   return (
     <>
       <div className="zoom-container">{zoomNum}</div>
+      {/* <Graph {..._config} /> */}
       {/* {graphConfig && <Graph {..._config} />} */}
-      <Graph {..._config} />
-      {/* {graphConfig && <Graph key={cKey} {..._config} />} */}
+      {/* <GraphV2 {..._config} /> */}
+      {graphConfig && <GraphV2 key={cKey} {...graphConfig} />}
     </>
   );
 };

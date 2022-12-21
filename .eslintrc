@@ -1,5 +1,6 @@
 {
-  "extends": ["eslint:recommended"],
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
   "globals": {
     "cy": true,
     "Cypress": true,
@@ -13,14 +14,14 @@
     "Map": true,
     "Set": true
   },
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "plugins": ["standard", "promise", "react"],
+  "plugins": ["standard", "promise", "react", "@typescript-eslint"],
   "env": {
     "browser": true
   },

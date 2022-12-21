@@ -241,7 +241,7 @@ export default class Graph extends React.Component {
 
     if (!this.state.config.staticGraph) {
       // this is where d3 and react bind
-      let draggedNode = this.state.nodes[id];
+      const draggedNode = this.state.nodes[id];
 
       draggedNode.oldX = draggedNode.x;
       draggedNode.oldY = draggedNode.y;
@@ -521,9 +521,9 @@ export default class Graph extends React.Component {
    */
   resetNodesPositions = () => {
     if (!this.state.config.staticGraph) {
-      let initialNodesState = initializeNodes(this.props.data.nodes);
-      for (let nodeId in this.state.nodes) {
-        let node = this.state.nodes[nodeId];
+      const initialNodesState = initializeNodes(this.props.data.nodes);
+      for (const nodeId in this.state.nodes) {
+        const node = this.state.nodes[nodeId];
 
         if (node.fx && node.fy) {
           Reflect.deleteProperty(node, "fx");
@@ -531,7 +531,7 @@ export default class Graph extends React.Component {
         }
 
         if (nodeId in initialNodesState) {
-          let initialNode = initialNodesState[nodeId];
+          const initialNode = initialNodesState[nodeId];
           node.x = initialNode.x;
           node.y = initialNode.y;
         }
@@ -616,6 +616,7 @@ export default class Graph extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log("did updadete..");
     // if the property staticGraph was activated we want to stop possible ongoing simulation
     const shouldPause = this.state.config.staticGraph || this.state.config.staticGraphWithDragAndDrop;
 
@@ -625,7 +626,6 @@ export default class Graph extends React.Component {
 
     if (!this.state.config.staticGraph && (this.state.newGraphElements || this.state.d3ConfigUpdated)) {
       this._graphBindD3ToReactComponent();
-
       if (!this.state.config.staticGraphWithDragAndDrop) {
         this.restartSimulation();
       }
