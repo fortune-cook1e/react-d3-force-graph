@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, useRef } from "react";
 import { GraphConfig, GraphState } from "src/types/graph";
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
@@ -20,21 +20,27 @@ import {
 } from "./graph.helper";
 import { renderGraph } from "./graph.renderer";
 import { merge, debounce, throwErr } from "../../utils";
+import useUpdateEffect from "../../hooks/useUpdateEffect";
 
 interface Props {
   id: string;
   data: any;
   config: GraphConfig;
   onZoomChange?: (zoom: number) => void;
+  onNodePositionChange?: (id: string, x: number, y: number) => void;
 }
 
+const nodeClickTimer: any = null;
+
 const GraphV2: FC<Props> = props => {
-  const { config, data, id, onZoomChange } = props;
+  const { config, data, id, onZoomChange, onNodePositionChange } = props;
   // this.focusAnimationTimeout = null;
   // this.nodeClickTimer = null;
   // this.isDraggingNode = false;
 
   const [graphState, setGraphState] = useState<GraphState>(() => initializeGraphState(props, {}));
+  const focusAnimationTimeout = useRef<any>(null);
+  const isDraggingNode = useRef<boolean>(false);
 
   const debounceZoomChange = () => {
     if (!onZoomChange) return;
@@ -91,18 +97,93 @@ const GraphV2: FC<Props> = props => {
     graphState?.simulation?.force(CONST.LINK_CLASS_NAME, forceLink);
   }
 
-  // _graphNodeDragConfig() {
-  //   const customNodeDrag = d3Drag()
-  //     .on("start", this._onDragStart)
-  //     .on("drag", this._onDragMove)
-  //     .on("end", this._onDragEnd);
+  const pauseSimulation = () => graphState?.simulation?.stop();
 
-  //   d3Select(`#${this.state.id}-${CONST.GRAPH_WRAPPER_ID}`)
-  //     .selectAll(".node")
-  //     .call(customNodeDrag);
-  // }
+  const _onDragStart = () => {
+    isDraggingNode.current = true;
+    pauseSimulation();
 
-  function _graphBindD3ToReactComponent() {
+    if (graphState.enableFocusAnimation) {
+      setGraphState(g => ({
+        ...g,
+        enableFocusAnimation: false,
+      }));
+    }
+  };
+
+  const _onDragMove = (ev, index, nodeList) => {
+    const id = nodeList[index].id;
+
+    if (!graphState.config.staticGraph) {
+      // this is where d3 and react bind
+      const draggedNode = graphState.nodes[id];
+
+      draggedNode.oldX = draggedNode.x;
+      draggedNode.oldY = draggedNode.y;
+
+      const newX = draggedNode.x + d3Event.dx;
+      const newY = draggedNode.y + d3Event.dy;
+      const shouldUpdateNode = !graphState.config.bounded || isPositionInBounds({ x: newX, y: newY }, graphState);
+
+      if (shouldUpdateNode) {
+        draggedNode.x = newX;
+        draggedNode.y = newY;
+
+        // set nodes fixing coords fx and fy
+        draggedNode["fx"] = draggedNode.x;
+        draggedNode["fy"] = draggedNode.y;
+        setGraphState(g => ({
+          ...g,
+          draggedNode,
+        }));
+      }
+    }
+  };
+
+  /**
+   * Handles node position change.
+   * @param {Object} node - an object holding information about the dragged node.
+   * @returns {undefined}
+   */
+  const _onNodePositionChange = node => {
+    if (!props.onNodePositionChange) {
+      return;
+    }
+
+    const { id, x, y } = node;
+
+    onNodePositionChange?.(id, x, y);
+  };
+
+  const _onDragEnd = () => {
+    isDraggingNode.current = false;
+
+    if (graphState.draggedNode) {
+      _onNodePositionChange(graphState.draggedNode);
+      setGraphState(g => ({
+        ...g,
+        draggedNode: undefined,
+      }));
+    }
+
+    !graphState.config.staticGraph &&
+      graphState.config.automaticRearrangeAfterDropNode &&
+      graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
+  };
+
+  // 生效D3拖拽效果
+  const _graphNodeDragConfig = () => {
+    const customNodeDrag = d3Drag()
+      .on("start", _onDragStart)
+      .on("drag", _onDragMove)
+      .on("end", _onDragEnd);
+
+    d3Select(`#${id}-${CONST.GRAPH_WRAPPER_ID}`)
+      .selectAll(".node")
+      .call(customNodeDrag);
+  };
+
+  const _graphBindD3ToReactComponent = () => {
     if (!graphState) return;
     if (!graphState?.config?.d3?.disableLinkForce) {
       graphState?.simulation?.nodes(graphState.d3Nodes).on("tick", () => {
@@ -119,15 +200,58 @@ const GraphV2: FC<Props> = props => {
       });
       _graphLinkForceConfig();
     }
-    // if (!graphState.config.freezeAllDragEvents) {
-    //   _graphNodeDragConfig();
-    // }
-  }
+    if (!graphState.config.freezeAllDragEvents) {
+      _graphNodeDragConfig();
+    }
+  };
+
+  const centerFocusedNode = () => {
+    const focusedNodeId = data.focusedNodeId;
+
+    const d3FocusedNode = graphState?.d3Nodes?.find(node => `${node.id}` === `${focusedNodeId}`);
+    const containerElId = `${graphState.id}-${CONST.GRAPH_WRAPPER_ID}`;
+    const focusTransformation =
+      getCenterAndZoomTransformation(d3FocusedNode, graphState.config, containerElId) || graphState.focusTransformation;
+    setGraphState(g => ({
+      ...g,
+      focusedNodeId,
+      focusTransformation,
+    }));
+  };
 
   useEffect(() => {
     _graphBindD3ToReactComponent();
     setZoomConfig();
-  }, []);
+    //
+  }, [props]);
+
+  useUpdateEffect(() => {
+    console.log("update..");
+    if (data.focusedNodeId) {
+      centerFocusedNode();
+    }
+  }, [data.focusedNodeId]);
+
+  const _generateFocusAnimationProps = () => {
+    // In case an older animation was still not complete, clear previous timeout to ensure the new one is not cancelled
+    if (graphState.enableFocusAnimation) {
+      if (focusAnimationTimeout.current) {
+        clearTimeout(focusAnimationTimeout.current);
+      }
+
+      focusAnimationTimeout.current = setTimeout(
+        () => setGraphState(g => ({ ...g, enableFocusAnimation: false })),
+        graphState?.config?.focusAnimationDuration * CONST.FOCUS_ANIMATION_DURATION
+      );
+    }
+
+    const transitionDuration = graphState.enableFocusAnimation ? graphState.config.focusAnimationDuration : 0;
+
+    return {
+      style: { transitionDuration: `${transitionDuration}s` },
+      transform: graphState.focusTransformation,
+    };
+  };
 
   const onClickNode = () => {};
   const onDoubleClickNode = () => {};
@@ -168,11 +292,13 @@ const GraphV2: FC<Props> = props => {
     width: config.width,
   };
 
+  const containerProps = _generateFocusAnimationProps();
+
   return (
     <div id={`${id}-${CONST.GRAPH_WRAPPER_ID}`}>
       <svg name={`svg-container-${id}`} style={svgStyle}>
         {defs}
-        <g id={`${id}-${CONST.GRAPH_CONTAINER_ID}`}>
+        <g id={`${id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
           {links}
           {nodes}
         </g>

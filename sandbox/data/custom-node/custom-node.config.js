@@ -2,8 +2,8 @@ import React from "react";
 import CustomNode from "./CustomNode";
 
 export default {
-  automaticRearrangeAfterDropNode: false,
-  collapsible: false,
+  automaticRearrangeAfterDropNode: true,
+  collapsible: true,
   height: 400,
   highlightDegree: 1,
   highlightOpacity: 0.2,
@@ -15,7 +15,6 @@ export default {
   staticGraph: false,
   width: 800,
   directed: true,
-  zoomDisabled: true,
   node: {
     color: "#d3d3d3",
     fontColor: "black",

@@ -112,6 +112,9 @@ const Link = props => {
     },
   };
 
+  // FixBug: 解决初始化时 计算 d时 会出现 NaN数据的Bug
+  if (lineProps.d.includes("NaN")) return null;
+
   return (
     <g>
       <path {...lineProps} id={id} />

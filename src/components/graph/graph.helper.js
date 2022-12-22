@@ -334,7 +334,7 @@ function checkForGraphConfigChanges(nextProps, currentState) {
  * @memberof Graph/helper
  */
 function getCenterAndZoomTransformation(d3Node, config, containerElId) {
-  if (!d3Node) {
+  if (!d3Node || !d3Node.x || !d3Node.y) {
     return;
   }
 

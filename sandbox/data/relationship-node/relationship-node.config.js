@@ -3,7 +3,7 @@ import RelationshipNode from "./RelationshipNode";
 
 const relationConfig = {
   automaticRearrangeAfterDropNode: false,
-  collapsible: false,
+  collapsible: true,
   height: 400,
   highlightDegree: 1,
   highlightOpacity: 0.1,

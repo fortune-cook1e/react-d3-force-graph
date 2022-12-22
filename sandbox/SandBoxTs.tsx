@@ -13,7 +13,7 @@ const graphData = {
     properties: { ...n.properties, root: index === 0 },
   })),
   links: data.links,
-  focusedNodeId: data.rootId,
+  // focusedNodeId: data.rootId,
 };
 
 const SandBoxTs = (): JSX.Element => {
@@ -53,7 +53,7 @@ const SandBoxTs = (): JSX.Element => {
         height: window.innerHeight,
       },
     });
-    // setReady(true);
+    setReady(true);
   };
 
   useEffect(() => {
@@ -62,10 +62,15 @@ const SandBoxTs = (): JSX.Element => {
 
   useEffect(() => {
     if (ready) {
-      setGraphConfig(c => ({
-        ...c,
-      }));
-      setCKey(c => c++);
+      setTimeout(() => {
+        setGraphConfig(c => ({
+          ...c,
+          data: {
+            ...c.data,
+            focusedNodeId: data.rootId,
+          },
+        }));
+      }, 3000);
     }
   }, [ready]);
 

@@ -98,4 +98,7 @@ export interface GraphState {
     k: number;
   };
   draggedNode?: [];
+  enableFocusAnimation?: boolean;
+  focusTransformation?: string;
+  focusAnimationDuration?: number;
 }
