@@ -60,19 +60,19 @@ const SandBoxTs = (): JSX.Element => {
     initData();
   }, []);
 
-  useEffect(() => {
-    if (ready) {
-      setTimeout(() => {
-        setGraphConfig(c => ({
-          ...c,
-          data: {
-            ...c.data,
-            focusedNodeId: data.rootId,
-          },
-        }));
-      }, 3000);
-    }
-  }, [ready]);
+  // useEffect(() => {
+  //   if (ready) {
+  //     setTimeout(() => {
+  //       setGraphConfig(c => ({
+  //         ...c,
+  //         data: {
+  //           ...c.data,
+  //           focusedNodeId: data.rootId,
+  //         },
+  //       }));
+  //     }, 3000);
+  //   }
+  // }, [ready]);
 
   const onZoomChange = (val: number) => {
     setZoomNum(val);
@@ -87,8 +87,8 @@ const SandBoxTs = (): JSX.Element => {
       <div className="zoom-container">{zoomNum}</div>
       {/* <Graph {..._config} /> */}
       {/* {graphConfig && <Graph {..._config} />} */}
-      {/* <GraphV2 {..._config} /> */}
-      {graphConfig && <GraphV2 key={cKey} {...graphConfig} />}
+      <GraphV2 {..._config} />
+      {/* {graphConfig && <Graph key={cKey} {...graphConfig} />} */}
     </>
   );
 };

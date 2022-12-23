@@ -1,11 +1,6 @@
 const MAX_LEVEL = 2;
 const MAX_CHILDREN_LENGTH = 2;
 
-/**
- * 生成随机字符串
- * @param {number} len
- * @returns
- */
 const randomString = len => {
   const length = len || 32;
   const $chars =
@@ -60,10 +55,6 @@ const treeToResponseData = treeData => {
   };
 };
 
-/**
- * @description 根据树结构数据生成 nodes 数据
- * @date 2022-12-13 17:04:50
- */
 const generateNodesByTree = (treeData, tns) => {
   const _tns = tns || [];
   const { id, properties } = treeData;

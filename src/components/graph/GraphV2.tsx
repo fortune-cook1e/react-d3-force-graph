@@ -10,7 +10,6 @@ import DEFAULT_CONFIG from "./graph.config";
 import ERRORS from "../../err";
 import { getTargetLeafConnections, toggleLinksMatrixConnections, toggleLinksConnections } from "./collapse.helper";
 import {
-  updateNodeHighlightedValue,
   checkForGraphConfigChanges,
   checkForGraphElementsChanges,
   getCenterAndZoomTransformation,
@@ -18,6 +17,7 @@ import {
   initializeNodes,
   isPositionInBounds,
 } from "./graph.helper";
+import { updateNodeHighlightedValue } from "./graph.helper-v2";
 import { renderGraph } from "./graph.renderer";
 import { merge, debounce, throwErr } from "../../utils";
 import useUpdateEffect from "../../hooks/useUpdateEffect";
@@ -58,13 +58,6 @@ const GraphV2: FC<Props> = props => {
         transform,
       }));
     }
-
-    // Tip: 暂时屏蔽zoom
-    // only send zoom change events if the zoom has changed (_zoomed() also gets called when panning)
-    // if (this.debouncedOnZoomChange && this.state.previousZoom !== transform.k && !this.state.config.panAndZoom) {
-    //   this.debouncedOnZoomChange(this.state.previousZoom, transform.k);
-    //   this.setState({ previousZoom: transform.k });
-    // }
   };
 
   const setZoomConfig = () => {
@@ -88,21 +81,20 @@ const GraphV2: FC<Props> = props => {
   };
 
   // 设置D3 Link 保证图表以 force-layout 展示
-  function _graphLinkForceConfig() {
+  const _graphLinkForceConfig = () => {
     const forceLink = d3ForceLink(graphState.d3Links)
       .id(l => l.id)
       .distance(graphState?.config?.d3?.linkLength)
       .strength(graphState?.config?.d3?.linkStrength);
 
     graphState?.simulation?.force(CONST.LINK_CLASS_NAME, forceLink);
-  }
+  };
 
   const pauseSimulation = () => graphState?.simulation?.stop();
 
   const _onDragStart = () => {
     isDraggingNode.current = true;
     pauseSimulation();
-
     if (graphState.enableFocusAnimation) {
       setGraphState(g => ({
         ...g,
@@ -166,9 +158,21 @@ const GraphV2: FC<Props> = props => {
       }));
     }
 
-    !graphState.config.staticGraph &&
-      graphState.config.automaticRearrangeAfterDropNode &&
-      graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
+    // !graphState.config.staticGraph &&
+    //   graphState.config.automaticRearrangeAfterDropNode &&
+    //   graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
+  };
+
+  // hover节点设置高亮节点
+  const _setNodeHighlightedValue = (id: string, value = false) => {
+    const { nodes, links, config } = graphState;
+    const { nodes: updatedNodes, highlightedNode } = updateNodeHighlightedValue(nodes, links, config, id, value);
+
+    setGraphState({
+      ...graphState,
+      nodes: updatedNodes,
+      highlightedNode,
+    });
   };
 
   // 生效D3拖拽效果
@@ -205,6 +209,7 @@ const GraphV2: FC<Props> = props => {
     }
   };
 
+  // 居中 focusedNode
   const centerFocusedNode = () => {
     const focusedNodeId = data.focusedNodeId;
 
@@ -223,14 +228,13 @@ const GraphV2: FC<Props> = props => {
     _graphBindD3ToReactComponent();
     setZoomConfig();
     //
-  }, [props]);
+  }, []);
 
-  useUpdateEffect(() => {
-    console.log("update..");
-    if (data.focusedNodeId) {
-      centerFocusedNode();
-    }
-  }, [data.focusedNodeId]);
+  // useUpdateEffect(() => {
+  //   if (data.focusedNodeId) {
+  //     centerFocusedNode();
+  //   }
+  // }, [data.focusedNodeId]);
 
   const _generateFocusAnimationProps = () => {
     // In case an older animation was still not complete, clear previous timeout to ensure the new one is not cancelled
@@ -256,8 +260,22 @@ const GraphV2: FC<Props> = props => {
   const onClickNode = () => {};
   const onDoubleClickNode = () => {};
   const onRightClickNode = () => {};
-  const onMouseOverNode = () => {};
-  const onMouseOut = () => {};
+
+  const onMouseOverNode = (id: string) => {
+    if (isDraggingNode.current) return;
+    const clickedNode = graphState.nodes[id];
+
+    // Todo: 接收 onMouseOverNode
+    graphState.config.nodeHighlightBehavior && _setNodeHighlightedValue(id, true);
+  };
+
+  const onMouseOutNode = (id: string) => {
+    if (isDraggingNode.current) return;
+    const clickedNode = graphState.nodes[id];
+
+    // Todo: 接收onMouseOutNode Props
+    graphState.config.nodeHighlightBehavior && _setNodeHighlightedValue(id, false);
+  };
 
   const onClickLink = () => {};
   const onRightClickLink = () => {};
@@ -271,7 +289,7 @@ const GraphV2: FC<Props> = props => {
       onDoubleClickNode,
       onRightClickNode,
       onMouseOverNode,
-      onMouseOut,
+      onMouseOut: onMouseOutNode,
     },
     graphState.d3Links,
     graphState.links,

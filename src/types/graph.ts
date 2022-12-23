@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-
+import { GraphStateNode } from "./node";
+import { GraphStateLink } from "./link";
 export interface GraphD3Config {
   alphaTarget: number;
   gravity: number;
@@ -79,14 +80,14 @@ export interface GraphConfig {
   link?: GraphLinkConfig;
 }
 
-export interface GraphData {}
+// export interface GraphData {}
 
 export interface GraphState {
   id: string;
   config: GraphConfig;
-  links?: [];
+  links: GraphStateLink;
   d3Links?: [];
-  nodes?: [];
+  nodes: Record<string, GraphStateNode>;
   d3Nodes?: [];
   highlightedNode?: string;
   simulation?: [];
