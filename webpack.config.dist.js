@@ -3,6 +3,8 @@ const path = require("path");
 const Visualizer = require("webpack-visualizer-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
+const jstsRegex = /\.(js|jsx|ts|tsx)$/;
+
 module.exports = {
   context: path.join(__dirname, "src"),
   entry: "./index.js",
@@ -13,14 +15,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: jstsRegex,
         exclude: /node_modules|sandbox/,
         loader: "babel-loader",
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   plugins: [
     new BundleAnalyzerPlugin({

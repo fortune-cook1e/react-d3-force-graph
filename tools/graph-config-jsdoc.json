@@ -6,7 +6,7 @@
       "filename": "graph.config.js",
       "lineno": 277,
       "columnno": 0,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000002",
         "name": "module.exports",
@@ -637,7 +637,7 @@
       "filename": "graph.config.js",
       "lineno": 278,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000004",
         "name": "automaticRearrangeAfterDropNode",
@@ -659,7 +659,7 @@
       "filename": "graph.config.js",
       "lineno": 279,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000006",
         "name": "collapsible",
@@ -681,7 +681,7 @@
       "filename": "graph.config.js",
       "lineno": 280,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000008",
         "name": "directed",
@@ -703,7 +703,7 @@
       "filename": "graph.config.js",
       "lineno": 281,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000010",
         "name": "focusAnimationDuration",
@@ -725,7 +725,7 @@
       "filename": "graph.config.js",
       "lineno": 282,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000012",
         "name": "focusZoom",
@@ -747,7 +747,7 @@
       "filename": "graph.config.js",
       "lineno": 283,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000014",
         "name": "freezeAllDragEvents",
@@ -769,7 +769,7 @@
       "filename": "graph.config.js",
       "lineno": 284,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000016",
         "name": "height",
@@ -791,7 +791,7 @@
       "filename": "graph.config.js",
       "lineno": 285,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000018",
         "name": "highlightDegree",
@@ -813,7 +813,7 @@
       "filename": "graph.config.js",
       "lineno": 286,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000020",
         "name": "highlightOpacity",
@@ -835,7 +835,7 @@
       "filename": "graph.config.js",
       "lineno": 287,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000022",
         "name": "linkHighlightBehavior",
@@ -857,7 +857,7 @@
       "filename": "graph.config.js",
       "lineno": 288,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000024",
         "name": "maxZoom",
@@ -879,7 +879,7 @@
       "filename": "graph.config.js",
       "lineno": 289,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000026",
         "name": "minZoom",
@@ -901,7 +901,7 @@
       "filename": "graph.config.js",
       "lineno": 290,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000028",
         "name": "initialZoom",
@@ -923,7 +923,7 @@
       "filename": "graph.config.js",
       "lineno": 291,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000030",
         "name": "nodeHighlightBehavior",
@@ -945,7 +945,7 @@
       "filename": "graph.config.js",
       "lineno": 292,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000032",
         "name": "panAndZoom",
@@ -967,7 +967,7 @@
       "filename": "graph.config.js",
       "lineno": 293,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000034",
         "name": "staticGraph",
@@ -989,7 +989,7 @@
       "filename": "graph.config.js",
       "lineno": 294,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000036",
         "name": "staticGraphWithDragAndDrop",
@@ -1011,7 +1011,7 @@
       "filename": "graph.config.js",
       "lineno": 295,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000038",
         "name": "bounded",
@@ -1033,7 +1033,7 @@
       "filename": "graph.config.js",
       "lineno": 296,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000040",
         "name": "width",
@@ -1055,7 +1055,7 @@
       "filename": "graph.config.js",
       "lineno": 297,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000042",
         "name": "d3",
@@ -1077,7 +1077,7 @@
       "filename": "graph.config.js",
       "lineno": 298,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000044",
         "name": "alphaTarget",
@@ -1099,7 +1099,7 @@
       "filename": "graph.config.js",
       "lineno": 299,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000046",
         "name": "gravity",
@@ -1121,7 +1121,7 @@
       "filename": "graph.config.js",
       "lineno": 300,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000049",
         "name": "linkLength",
@@ -1143,7 +1143,7 @@
       "filename": "graph.config.js",
       "lineno": 301,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000051",
         "name": "linkStrength",
@@ -1165,7 +1165,7 @@
       "filename": "graph.config.js",
       "lineno": 302,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000053",
         "name": "disableLinkForce",
@@ -1187,7 +1187,7 @@
       "filename": "graph.config.js",
       "lineno": 304,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000055",
         "name": "node",
@@ -1209,7 +1209,7 @@
       "filename": "graph.config.js",
       "lineno": 305,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000057",
         "name": "color",
@@ -1231,7 +1231,7 @@
       "filename": "graph.config.js",
       "lineno": 306,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000059",
         "name": "fontColor",
@@ -1253,7 +1253,7 @@
       "filename": "graph.config.js",
       "lineno": 307,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000061",
         "name": "fontSize",
@@ -1275,7 +1275,7 @@
       "filename": "graph.config.js",
       "lineno": 308,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000063",
         "name": "fontWeight",
@@ -1297,7 +1297,7 @@
       "filename": "graph.config.js",
       "lineno": 309,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000065",
         "name": "highlightColor",
@@ -1319,7 +1319,7 @@
       "filename": "graph.config.js",
       "lineno": 310,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000067",
         "name": "highlightFontSize",
@@ -1341,7 +1341,7 @@
       "filename": "graph.config.js",
       "lineno": 311,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000069",
         "name": "highlightFontWeight",
@@ -1363,7 +1363,7 @@
       "filename": "graph.config.js",
       "lineno": 312,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000071",
         "name": "highlightStrokeColor",
@@ -1385,7 +1385,7 @@
       "filename": "graph.config.js",
       "lineno": 313,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000073",
         "name": "highlightStrokeWidth",
@@ -1407,7 +1407,7 @@
       "filename": "graph.config.js",
       "lineno": 314,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000075",
         "name": "labelProperty",
@@ -1429,7 +1429,7 @@
       "filename": "graph.config.js",
       "lineno": 315,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000077",
         "name": "labelPosition",
@@ -1451,7 +1451,7 @@
       "filename": "graph.config.js",
       "lineno": 316,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000079",
         "name": "labelClass",
@@ -1473,7 +1473,7 @@
       "filename": "graph.config.js",
       "lineno": 317,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000081",
         "name": "mouseCursor",
@@ -1495,7 +1495,7 @@
       "filename": "graph.config.js",
       "lineno": 318,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000083",
         "name": "opacity",
@@ -1517,7 +1517,7 @@
       "filename": "graph.config.js",
       "lineno": 319,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000085",
         "name": "renderLabel",
@@ -1539,7 +1539,7 @@
       "filename": "graph.config.js",
       "lineno": 320,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000087",
         "name": "size",
@@ -1561,7 +1561,7 @@
       "filename": "graph.config.js",
       "lineno": 321,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000089",
         "name": "strokeColor",
@@ -1583,7 +1583,7 @@
       "filename": "graph.config.js",
       "lineno": 322,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000091",
         "name": "strokeWidth",
@@ -1605,7 +1605,7 @@
       "filename": "graph.config.js",
       "lineno": 323,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000093",
         "name": "svg",
@@ -1627,7 +1627,7 @@
       "filename": "graph.config.js",
       "lineno": 324,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000095",
         "name": "symbolType",
@@ -1649,7 +1649,7 @@
       "filename": "graph.config.js",
       "lineno": 325,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000097",
         "name": "viewGenerator",
@@ -1671,7 +1671,7 @@
       "filename": "graph.config.js",
       "lineno": 327,
       "columnno": 2,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000099",
         "name": "link",
@@ -1693,7 +1693,7 @@
       "filename": "graph.config.js",
       "lineno": 328,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000101",
         "name": "color",
@@ -1715,7 +1715,7 @@
       "filename": "graph.config.js",
       "lineno": 329,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000103",
         "name": "fontColor",
@@ -1737,7 +1737,7 @@
       "filename": "graph.config.js",
       "lineno": 330,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000105",
         "name": "fontSize",
@@ -1759,7 +1759,7 @@
       "filename": "graph.config.js",
       "lineno": 331,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000107",
         "name": "fontWeight",
@@ -1781,7 +1781,7 @@
       "filename": "graph.config.js",
       "lineno": 332,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000109",
         "name": "highlightColor",
@@ -1803,7 +1803,7 @@
       "filename": "graph.config.js",
       "lineno": 333,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000111",
         "name": "highlightFontSize",
@@ -1825,7 +1825,7 @@
       "filename": "graph.config.js",
       "lineno": 334,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000113",
         "name": "highlightFontWeight",
@@ -1847,7 +1847,7 @@
       "filename": "graph.config.js",
       "lineno": 335,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000115",
         "name": "labelProperty",
@@ -1869,7 +1869,7 @@
       "filename": "graph.config.js",
       "lineno": 336,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000117",
         "name": "mouseCursor",
@@ -1891,7 +1891,7 @@
       "filename": "graph.config.js",
       "lineno": 337,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000119",
         "name": "opacity",
@@ -1913,7 +1913,7 @@
       "filename": "graph.config.js",
       "lineno": 338,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000121",
         "name": "renderLabel",
@@ -1935,7 +1935,7 @@
       "filename": "graph.config.js",
       "lineno": 339,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000123",
         "name": "semanticStrokeWidth",
@@ -1957,7 +1957,7 @@
       "filename": "graph.config.js",
       "lineno": 340,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000125",
         "name": "strokeWidth",
@@ -1979,7 +1979,7 @@
       "filename": "graph.config.js",
       "lineno": 341,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000127",
         "name": "markerHeight",
@@ -2001,7 +2001,7 @@
       "filename": "graph.config.js",
       "lineno": 342,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000129",
         "name": "markerWidth",
@@ -2023,7 +2023,7 @@
       "filename": "graph.config.js",
       "lineno": 343,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000131",
         "name": "type",
@@ -2045,7 +2045,7 @@
       "filename": "graph.config.js",
       "lineno": 344,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000133",
         "name": "selfLinkDirection",
@@ -2067,7 +2067,7 @@
       "filename": "graph.config.js",
       "lineno": 345,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000135",
         "name": "strokeDasharray",
@@ -2089,7 +2089,7 @@
       "filename": "graph.config.js",
       "lineno": 346,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000137",
         "name": "strokeDashoffset",
@@ -2111,7 +2111,7 @@
       "filename": "graph.config.js",
       "lineno": 347,
       "columnno": 4,
-      "path": "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph",
+      "path": "/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph",
       "code": {
         "id": "astnode100000139",
         "name": "strokeLinecap",
@@ -2129,8 +2129,6 @@
   {
     "kind": "package",
     "longname": "package:undefined",
-    "files": [
-      "/Users/fortune_cookie/Desktop/coding/mingyuanyun/yunke/react-d3-graph/src/components/graph/graph.config.js"
-    ]
+    "files": ["/Users/fortunecookie/Desktop/Coding/Github/react-d3-force-graph/src/components/graph/graph.config.js"]
   }
 ]

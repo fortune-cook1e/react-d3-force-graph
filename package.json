@@ -1,6 +1,6 @@
 {
   "name": "react-d3-force-graph",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component to build interactive and configurable graphs with d3 effortlessly",
   "author": "fortune_cookie",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "build:rd3g": "rm -rf dist/ && webpack --config webpack.config.dist.js -p --display-modules --optimize-minimize",
     "build:sandbox": "yarn run generate:tooltips && webpack --config webpack.config.js -p",
     "build:transpile": "babel -d lib src",
+    "dist": "rm -rf dist/ && webpack --config webpack.config.dist.js -p --display-modules --optimize-minimize",
     "build": "yarn install && npm-run-all --parallel build:*",
     "generate:tooltips": "jsdoc -X ./src/components/graph/graph.config.js > ./tools/graph-config-jsdoc.json && cd tools && node tooltips-docs-generator.js > ../sandbox/graph-config-tooltips.js",
     "lint:fix": "eslint --config=.eslintrc.js --fix \"src/**/*.js*\" \"sandbox/**/*.js*\"",
