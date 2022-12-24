@@ -189,6 +189,7 @@ const GraphV2: FC<Props> = props => {
       .call(customNodeDrag);
   };
 
+  // 初始化图表(核心)
   const _graphBindD3ToReactComponent = () => {
     if (!graphState) return;
     if (!graphState?.config?.d3?.disableLinkForce) {
@@ -204,6 +205,7 @@ const GraphV2: FC<Props> = props => {
           nodes: newNodes,
         }));
       });
+      // Tip: 影响图表是否能画出force图
       _graphLinkForceConfig();
     }
     if (!graphState.config.freezeAllDragEvents) {
@@ -229,15 +231,15 @@ const GraphV2: FC<Props> = props => {
   useEffect(() => {
     _graphBindD3ToReactComponent();
     setZoomConfig();
-
-    centerFocusedNode();
   }, []);
 
-  // useUpdateEffect(() => {
-  //   if (data.focusedNodeId) {
-  //     centerFocusedNode();
-  //   }
-  // }, [data.focusedNodeId]);
+  useEffect(() => {
+    // Tip: 只有当 end 事件触发时才说明节点各个位置已绘制完毕
+    graphState.simulation.on("end", value => {
+      // console.log("end....");
+      // centerFocusedNode();
+    });
+  }, []);
 
   const _generateFocusAnimationProps = () => {
     // In case an older animation was still not complete, clear previous timeout to ensure the new one is not cancelled

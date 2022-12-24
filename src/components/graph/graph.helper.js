@@ -24,6 +24,7 @@ import {
   forceY as d3ForceY,
   forceSimulation as d3ForceSimulation,
   forceManyBody as d3ForceManyBody,
+  forceCenter,
 } from "d3-force";
 import { select as d3Select } from "d3-selection";
 import { zoom as d3Zoom, zoomIdentity as d3ZoomIdentity } from "d3-zoom";
@@ -57,7 +58,8 @@ function _createForceSimulation(width, height, gravity) {
   return d3ForceSimulation()
     .force("charge", d3ForceManyBody().strength(forceStrength))
     .force("x", frx)
-    .force("y", fry);
+    .force("y", fry)
+    .force("center", forceCenter()); // Tip: 增加 center 让图表快速定位渲染
 }
 
 /**
