@@ -13,7 +13,7 @@ const graphData = {
     properties: { ...n.properties, root: index === 0 },
   })),
   links: data.links,
-  // focusedNodeId: data.rootId,
+  focusedNodeId: data.rootId,
 };
 
 const SandBoxTs = (): JSX.Element => {
@@ -85,9 +85,10 @@ const SandBoxTs = (): JSX.Element => {
   return (
     <>
       <div className="zoom-container">{zoomNum}</div>
+      {graphConfig && <GraphV2 {...graphConfig} />}
       {/* <Graph {..._config} /> */}
       {/* {graphConfig && <Graph {..._config} />} */}
-      <GraphV2 {..._config} />
+      {/* <GraphV2 {..._config} /> */}
       {/* {graphConfig && <Graph key={cKey} {...graphConfig} />} */}
     </>
   );

@@ -28,12 +28,14 @@ interface Props {
   config: GraphConfig;
   onZoomChange?: (zoom: number) => void;
   onNodePositionChange?: (id: string, x: number, y: number) => void;
+  onClickNode?: (clickedNodeId: string, clickedNode: any) => void;
+  onDoubleClickNode?: (clickedNodeId: string, clickedNode: any) => void;
 }
 
-const nodeClickTimer: any = null;
+let nodeClickTimer: any = null;
 
 const GraphV2: FC<Props> = props => {
-  const { config, data, id, onZoomChange, onNodePositionChange } = props;
+  const { config, data, id, onZoomChange, onNodePositionChange, onDoubleClickNode, onClickNode } = props;
   // this.focusAnimationTimeout = null;
   // this.nodeClickTimer = null;
   // this.isDraggingNode = false;
@@ -227,7 +229,8 @@ const GraphV2: FC<Props> = props => {
   useEffect(() => {
     _graphBindD3ToReactComponent();
     setZoomConfig();
-    //
+
+    centerFocusedNode();
   }, []);
 
   // useUpdateEffect(() => {
@@ -257,8 +260,48 @@ const GraphV2: FC<Props> = props => {
     };
   };
 
-  const onClickNode = () => {};
-  const onDoubleClickNode = () => {};
+  const _onClickNode = (clickedNodeId: string) => {
+    const clickedNode = graphState.nodes[clickedNodeId];
+    if (!nodeClickTimer) {
+      // Note: onDoubleClickNode is not defined we don't need a long wait
+      // to understand weather a second click will arrive soon or not
+      // we can immediately trigger the click timer because we're 100%
+      // that the double click even is never intended
+      const ttl = onDoubleClickNode ? CONST.TTL_DOUBLE_CLICK_IN_MS : 0;
+      nodeClickTimer = setTimeout(() => {
+        if (graphState.config.collapsible) {
+          const leafConnections = getTargetLeafConnections(clickedNodeId, graphState.links, graphState.config);
+          const links = toggleLinksMatrixConnections(graphState.links, leafConnections, graphState.config);
+          const d3Links = toggleLinksConnections(graphState.d3Links, links);
+          const firstLeaf = leafConnections?.["0"];
+
+          let isExpanding = false;
+
+          if (firstLeaf) {
+            const visibility = links[firstLeaf.source][firstLeaf.target];
+
+            isExpanding = visibility === 1;
+          }
+
+          setGraphState(g => ({
+            ...g,
+            links,
+            d3Links,
+          }));
+
+          if (isExpanding) {
+            _graphNodeDragConfig();
+          }
+        }
+        onClickNode?.(clickedNodeId, clickedNode);
+        nodeClickTimer = null;
+      }, ttl);
+    } else {
+      onDoubleClickNode?.(clickedNodeId, clickedNode);
+      nodeClickTimer = clearTimeout(nodeClickTimer);
+    }
+  };
+  const _onDoubleClickNode = () => {};
   const onRightClickNode = () => {};
 
   const onMouseOverNode = (id: string) => {
@@ -285,8 +328,8 @@ const GraphV2: FC<Props> = props => {
   const { nodes, links, defs } = renderGraph(
     graphState.nodes,
     {
-      onClickNode,
-      onDoubleClickNode,
+      onClickNode: _onClickNode,
+      onDoubleClickNode: _onDoubleClickNode,
       onRightClickNode,
       onMouseOverNode,
       onMouseOut: onMouseOutNode,
