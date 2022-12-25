@@ -1,6 +1,6 @@
 {
   "name": "react-d3-force-graph",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React component to build interactive and configurable graphs with d3 effortlessly",
   "author": "fortune_cookie",
   "license": "MIT",
@@ -10,7 +10,8 @@
     "url": "git+https://github.com/fortune-cook1e/react-d3-force-graph.git"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode=development --content-base sandbox --config webpack.config.js",
