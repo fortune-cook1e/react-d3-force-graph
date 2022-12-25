@@ -1,10 +1,10 @@
 {
   "name": "react-d3-force-graph",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component to build interactive and configurable graphs with d3 effortlessly",
   "author": "fortune_cookie",
   "license": "MIT",
-  "main": "lib/rd3g.bundle.js",
+  "main": "dist/rd3g.bundle.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fortune-cook1e/react-d3-force-graph.git"
