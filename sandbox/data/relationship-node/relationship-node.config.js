@@ -17,7 +17,7 @@ const relationConfig = {
   width: 1400,
   directed: true,
   d3: {
-    alphaTarget: 0.5,
+    alphaTarget: 200,
     gravity: -10000,
     linkLength: 400,
   },

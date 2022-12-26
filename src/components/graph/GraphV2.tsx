@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState, useRef } from "react";
-import { GraphConfig, GraphState } from "src/types/graph";
+import { GraphConfig, GraphProps, GraphState } from "src/types/graph";
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
 import { select as d3Select, selectAll as d3SelectAll, event as d3Event } from "d3-selection";
-import { zoom as d3Zoom } from "d3-zoom";
+import { zoom as d3Zoom, ZoomBehavior } from "d3-zoom";
 
 import CONST from "./graph.const";
 import DEFAULT_CONFIG from "./graph.config";
@@ -13,32 +13,18 @@ import {
   checkForGraphConfigChanges,
   checkForGraphElementsChanges,
   getCenterAndZoomTransformation,
-  initializeGraphState,
   initializeNodes,
   isPositionInBounds,
 } from "./graph.helper";
-import { updateNodeHighlightedValue } from "./graph.helper-v2";
+import { updateNodeHighlightedValue, initializeGraphState } from "./graph.helper-v2";
 import { renderGraph } from "./graph.renderer";
 import { merge, debounce, throwErr } from "../../utils";
 import useUpdateEffect from "../../hooks/useUpdateEffect";
 
-interface Props {
-  id: string;
-  data: any;
-  config: GraphConfig;
-  onZoomChange?: (zoom: number) => void;
-  onNodePositionChange?: (id: string, x: number, y: number) => void;
-  onClickNode?: (clickedNodeId: string, clickedNode: any) => void;
-  onDoubleClickNode?: (clickedNodeId: string, clickedNode: any) => void;
-}
-
 let nodeClickTimer: any = null;
 
-const GraphV2: FC<Props> = props => {
+const GraphV2: FC<GraphProps> = props => {
   const { config, data, id, onZoomChange, onNodePositionChange, onDoubleClickNode, onClickNode } = props;
-  // this.focusAnimationTimeout = null;
-  // this.nodeClickTimer = null;
-  // this.isDraggingNode = false;
 
   const [graphState, setGraphState] = useState<GraphState>(() => initializeGraphState(props, {}));
   const focusAnimationTimeout = useRef<any>(null);
@@ -65,7 +51,7 @@ const GraphV2: FC<Props> = props => {
   const setZoomConfig = () => {
     const selector = d3Select(`#${id}-${CONST.GRAPH_WRAPPER_ID}`);
 
-    const zoomObject = d3Zoom().scaleExtent([config.minZoom, config.maxZoom]);
+    const zoomObject: ZoomBehavior<any, any> = d3Zoom().scaleExtent([config.minZoom, config.maxZoom]);
 
     if (!config.freezeAllDragEvents) {
       zoomObject.on("zoom", setZoomEvent);
@@ -235,10 +221,10 @@ const GraphV2: FC<Props> = props => {
 
   useEffect(() => {
     // Tip: 只有当 end 事件触发时才说明节点各个位置已绘制完毕
-    // graphState?.simulation?.on("end", value => {
-    //   console.log("end....");
-    //   centerFocusedNode();
-    // });
+    graphState?.simulation?.on("end", value => {
+      console.log("end....");
+      // centerFocusedNode();
+    });
   }, []);
 
   const _generateFocusAnimationProps = () => {
@@ -360,7 +346,7 @@ const GraphV2: FC<Props> = props => {
   return (
     <div id={`${id}-${CONST.GRAPH_WRAPPER_ID}`}>
       <svg name={`svg-container-${id}`} style={svgStyle}>
-        {/* {defs} */}
+        {defs}
         <g id={`${id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
           {links}
           {nodes}

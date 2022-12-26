@@ -89,6 +89,8 @@ function _initializeLinks(graphLinks, config) {
 
     links[source][target] = value;
 
+    console.log({ config });
+
     if (!config.directed) {
       links[target][source] = value;
     }

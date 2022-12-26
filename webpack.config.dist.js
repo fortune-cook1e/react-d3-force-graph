@@ -6,6 +6,7 @@ const jstsRegex = /\.(js|jsx|ts|tsx)$/;
 
 module.exports = {
   mode: "production",
+  devtool: false,
   context: path.join(__dirname, "src"),
   entry: "./index.ts",
   output: {

@@ -6,4 +6,7 @@ export interface GraphStateNode {
   vy: number;
   x: number;
   y: number;
+  fx: number;
+  fy: number;
+  [prop: string]: any;
 }
