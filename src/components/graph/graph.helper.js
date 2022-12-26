@@ -59,7 +59,7 @@ function _createForceSimulation(width, height, gravity) {
     .force("charge", d3ForceManyBody().strength(forceStrength))
     .force("x", frx)
     .force("y", fry)
-    .force("center", forceCenter()); // Tip: 增加 center 让图表快速定位渲染
+    .force("center", forceCenter(width / 2, height / 2)); // Tip: 增加 center 让图表快速定位渲染
 }
 
 /**

@@ -8,7 +8,6 @@ function resolve(dir) {
 const jstsRegex = /\.(js|jsx|ts|tsx)$/;
 
 module.exports = {
-  // context: path.join(__dirname, "sandbox"),
   devtool: "source-map",
   entry: resolve("./sandbox/index.tsx"),
   output: {
@@ -16,8 +15,9 @@ module.exports = {
     filename: "rd3g.sandbox.bundle.js",
   },
   devServer: {
-    contentBase: resolve("./sandbox"),
-    inline: true,
+    static: {
+      directory: resolve("./sandbox"),
+    },
     hot: true,
     port: 3002,
   },

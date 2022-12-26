@@ -160,9 +160,9 @@ const GraphV2: FC<Props> = props => {
       }));
     }
 
-    // !graphState.config.staticGraph &&
-    //   graphState.config.automaticRearrangeAfterDropNode &&
-    //   graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
+    !graphState.config.staticGraph &&
+      graphState.config.automaticRearrangeAfterDropNode &&
+      graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
   };
 
   // hover节点设置高亮节点
@@ -235,10 +235,10 @@ const GraphV2: FC<Props> = props => {
 
   useEffect(() => {
     // Tip: 只有当 end 事件触发时才说明节点各个位置已绘制完毕
-    graphState.simulation.on("end", value => {
-      // console.log("end....");
-      // centerFocusedNode();
-    });
+    // graphState?.simulation?.on("end", value => {
+    //   console.log("end....");
+    //   centerFocusedNode();
+    // });
   }, []);
 
   const _generateFocusAnimationProps = () => {
@@ -360,7 +360,7 @@ const GraphV2: FC<Props> = props => {
   return (
     <div id={`${id}-${CONST.GRAPH_WRAPPER_ID}`}>
       <svg name={`svg-container-${id}`} style={svgStyle}>
-        {defs}
+        {/* {defs} */}
         <g id={`${id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
           {links}
           {nodes}

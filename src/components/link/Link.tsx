@@ -1,4 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
+import { GraphLinkConfig } from "../../types/link";
 
 /**
  * Link component is responsible for encapsulating link render.
@@ -38,7 +39,7 @@ import React from "react";
  *     onMouseOutLink={onMouseOutLink} />
 //  */
 
-const Link = props => {
+const Link: FC<GraphLinkConfig> = props => {
   const {
     onClickLink,
     onRightClickLink,
@@ -97,6 +98,7 @@ const Link = props => {
     onMouseOut: handleOnMouseOutLink,
     onMouseOver: handleOnMouseOverLink,
     style: lineStyle,
+    markerEnd: "",
   };
 
   if (markerId) {
@@ -109,6 +111,7 @@ const Link = props => {
       fill: fontColor,
       fontSize,
       fontWeight,
+      textAnchor: "middle" as any,
     },
   };
 
@@ -119,7 +122,7 @@ const Link = props => {
     <g>
       <path {...lineProps} id={id} />
       {label && (
-        <text style={{ textAnchor: "middle" }} {...textProps}>
+        <text {...textProps}>
           <textPath href={`#${id}`} startOffset="50%" style={{ opacity }}>
             {label}
           </textPath>

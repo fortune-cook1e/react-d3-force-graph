@@ -1,6 +1,6 @@
 {
   "name": "react-d3-force-graph",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React component to build interactive and configurable graphs with d3 effortlessly",
   "author": "fortune_cookie",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "lib"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode=development --content-base sandbox --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode=development --config webpack.config.js",
     "build:rd3g": "rm -rf dist/ && webpack --config webpack.config.dist.js -p --display-modules --optimize-minimize",
     "build:sandbox": "yarn run generate:tooltips && webpack --config webpack.config.js -p",
     "build:transpile": "rm -rf lib && babel --extensions '.js,.jsx,.ts,.tsx' -d lib src",
@@ -51,7 +51,7 @@
     "@types/react-dom": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
-    "babel-loader": "8.0.6",
+    "babel-loader": "^9.1.0",
     "classnames": "^2.3.2",
     "cross-env": "5.2.1",
     "css-loader": "2.0.2",
@@ -84,10 +84,10 @@
     "react-tooltip": "3.11.6",
     "style-loader": "0.18.2",
     "typescript": "^4.9.4",
-    "webpack": "4.41.6",
+    "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "3.3.8",
-    "webpack-dev-server": "^3.1.14",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
     "webpack-visualizer-plugin": "0.1.11"
   },
   "engines": {
