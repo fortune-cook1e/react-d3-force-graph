@@ -1,5 +1,5 @@
 const MAX_LEVEL = 2;
-const MAX_CHILDREN_LENGTH = 2;
+const MAX_CHILDREN_LENGTH = 3;
 
 const randomString = len => {
   const length = len || 32;

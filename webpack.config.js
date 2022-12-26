@@ -8,6 +8,7 @@ function resolve(dir) {
 const jstsRegex = /\.(js|jsx|ts|tsx)$/;
 
 module.exports = {
+  mode: "development",
   devtool: "source-map",
   entry: resolve("./sandbox/index.tsx"),
   output: {

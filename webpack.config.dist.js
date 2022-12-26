@@ -1,13 +1,13 @@
 const webpack = require("webpack");
 const path = require("path");
-const Visualizer = require("webpack-visualizer-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const jstsRegex = /\.(js|jsx|ts|tsx)$/;
 
 module.exports = {
+  mode: "production",
   context: path.join(__dirname, "src"),
-  entry: "./index.js",
+  entry: "./index.ts",
   output: {
     path: __dirname + "/dist/",
     filename: "rd3g.bundle.js",
@@ -30,7 +30,6 @@ module.exports = {
       reportFilename: "../gen-docs/bundle-analyser-stats.html",
       openAnalyzer: true,
     }),
-    new Visualizer({ filename: "../gen-docs/visualizer-stats.html" }),
     new webpack.DefinePlugin({
       rd3gRunningVersion: JSON.stringify(process.env.npm_package_version || "unknown"),
     }),

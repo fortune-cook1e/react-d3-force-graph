@@ -31,16 +31,6 @@ const SandBoxTs = (): JSX.Element => {
     });
   };
 
-  const _config = {
-    id: "graph",
-    data: graphData,
-    config: {
-      ...config,
-      width: window.innerWidth,
-      height: window.innerHeight,
-    },
-  };
-
   const initData = async () => {
     setLoading(true);
     const data = await mockPromiseGetData();
@@ -78,7 +68,7 @@ const SandBoxTs = (): JSX.Element => {
     setZoomNum(val);
     console.log("zoom change");
   };
-  const onNodePositionChange = val => {
+  const onNodePositionChange = (val: any) => {
     console.log("posichange...", { val });
   };
 
