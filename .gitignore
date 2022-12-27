@@ -104,3 +104,8 @@ gen-docs
 
 # TernJS port file
 .tern-port
+
+
+# sandbox
+sandbox/rd3g.sandbox.bundle.js
+sandbox/rd3g.sandbox.bundle.js.LICENSE.txt
