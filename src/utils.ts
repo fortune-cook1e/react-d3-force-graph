@@ -35,7 +35,7 @@ function _isPropertyNestedObject(o, k) {
  * @memberof utils
  */
 function isDeepEqual(o1, o2, _depth = 0) {
-  let diffs = [];
+  const diffs = [];
 
   if (_depth === 0 && o1 === o2) {
     return true;
@@ -52,7 +52,7 @@ function isDeepEqual(o1, o2, _depth = 0) {
     return false;
   }
 
-  for (let k of o1Keys) {
+  for (const k of o1Keys) {
     const nestedO = _isPropertyNestedObject(o1, k) && _isPropertyNestedObject(o2, k);
 
     if (nestedO && _depth < MAX_DEPTH) {
@@ -106,7 +106,7 @@ function isNil(o) {
 function deepClone(o, _clone = {}, _depth = 0) {
   const oKeys = Object.keys(o);
 
-  for (let k of oKeys) {
+  for (const k of oKeys) {
     const nested = _isPropertyNestedObject(o, k);
 
     _clone[k] = nested && _depth < MAX_DEPTH ? deepClone(o[k], {}, _depth + 1) : o[k];
@@ -126,13 +126,13 @@ function deepClone(o, _clone = {}, _depth = 0) {
  * @memberof utils
  */
 function merge(o1 = {}, o2 = {}, _depth = 0) {
-  let o = {};
+  const o = {};
 
   if (Object.keys(o1 || {}).length === 0) {
     return o2 && !isEmptyObject(o2) ? o2 : {};
   }
 
-  for (let k of Object.keys(o1)) {
+  for (const k of Object.keys(o1)) {
     const nestedO = !!(o2[k] && typeof o2[k] === "object" && typeof o1[k] === "object" && _depth < MAX_DEPTH);
 
     if (nestedO) {

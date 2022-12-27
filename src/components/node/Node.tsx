@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import nodeHelper from "./node.helper";
 import CONST from "./node.const";
@@ -53,7 +53,36 @@ import { logWarning } from "../../utils";
  *     onMouseOutNode={onMouseOutNode} />
  */
 
-const Node = props => {
+interface Props {
+  id: string;
+  onClickNode?: (id: string) => void;
+  onRightClickNode?: (event: MouseEvent, id: string) => void;
+  onMouseOverNode?: (id: string) => void;
+  onMouseOut?: (id: string) => void;
+  cursor: string;
+  opacity: number;
+  renderLabel: string;
+  labelPosition: string;
+  dx: number;
+  cx: number;
+  cy: number;
+  fontColor: string;
+  fontSize: number;
+  fontWeight: number;
+  labelClass: string;
+  size: number;
+  svg: string;
+  viewGenerator: () => JSX.Element;
+  label: string;
+  overrideGlobalViewGenerator: any;
+  type: string;
+  fill: string;
+  stroke: string;
+  strokeWidth: number;
+  className: string;
+}
+
+const Node: FC<Props> = props => {
   const {
     id,
     onClickNode,
@@ -93,7 +122,7 @@ const Node = props => {
    * @param {Object} event - native event.
    * @returns {undefined}
    */
-  const handleOnRightClickNode = event => onRightClickNode?.(event, id);
+  const handleOnRightClickNode = (event: MouseEvent) => onRightClickNode?.(event, id);
 
   /**
    * Handle mouse over node event.
