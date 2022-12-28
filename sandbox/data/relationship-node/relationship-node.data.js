@@ -1,6 +1,6 @@
-// const { relationshipsData } = require("./utils");
+const { relationshipsData } = require("./utils");
 
-const relationshipsData = {
+const simpleData = {
   nodes: [
     {
       id: "1",
