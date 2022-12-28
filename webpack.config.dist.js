@@ -18,7 +18,14 @@ module.exports = {
       {
         test: jstsRegex,
         exclude: /node_modules|sandbox/,
-        loader: "babel-loader",
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
       },
     ],
   },

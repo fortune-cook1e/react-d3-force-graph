@@ -31,7 +31,14 @@ module.exports = {
       {
         test: jstsRegex,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
       },
     ],
   },
