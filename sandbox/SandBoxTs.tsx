@@ -50,20 +50,6 @@ const SandBoxTs = (): JSX.Element => {
     initData();
   }, []);
 
-  // useEffect(() => {
-  //   if (ready) {
-  //     setTimeout(() => {
-  //       setGraphConfig(c => ({
-  //         ...c,
-  //         data: {
-  //           ...c.data,
-  //           focusedNodeId: data.rootId,
-  //         },
-  //       }));
-  //     }, 3000);
-  //   }
-  // }, [ready]);
-
   const onZoomChange = (val: number) => {
     setZoomNum(val);
     console.log("zoom change");

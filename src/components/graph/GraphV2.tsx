@@ -73,47 +73,6 @@ const GraphV2: FC<GraphProps> = props => {
 
   const pauseSimulation = () => graphState?.simulation?.stop();
 
-  const _onDragStart = () => {
-    isDraggingNode.current = true;
-    pauseSimulation();
-    if (graphState.enableFocusAnimation) {
-      setGraphState(g => ({
-        ...g,
-        enableFocusAnimation: false,
-      }));
-    }
-  };
-
-  const _onDragMove = (ev, index, nodeList) => {
-    console.log({ ev, index, nodeList });
-    const id = nodeList[index].id;
-
-    if (!graphState.config.staticGraph) {
-      // this is where d3 and react bind
-      const draggedNode = graphState.nodes[id];
-
-      draggedNode.oldX = draggedNode.x;
-      draggedNode.oldY = draggedNode.y;
-
-      const newX = draggedNode.x + d3Event.dx;
-      const newY = draggedNode.y + d3Event.dy;
-      const shouldUpdateNode = !graphState.config.bounded || isPositionInBounds({ x: newX, y: newY }, graphState);
-
-      if (shouldUpdateNode) {
-        draggedNode.x = newX;
-        draggedNode.y = newY;
-
-        // set nodes fixing coords fx and fy
-        draggedNode["fx"] = draggedNode.x;
-        draggedNode["fy"] = draggedNode.y;
-        setGraphState(g => ({
-          ...g,
-          draggedNode,
-        }));
-      }
-    }
-  };
-
   /**
    * Handles node position change.
    * @param {Object} node - an object holding information about the dragged node.
@@ -129,22 +88,6 @@ const GraphV2: FC<GraphProps> = props => {
     onNodePositionChange?.(id, x, y);
   };
 
-  const _onDragEnd = () => {
-    isDraggingNode.current = false;
-
-    if (graphState.draggedNode) {
-      _onNodePositionChange(graphState.draggedNode);
-      setGraphState(g => ({
-        ...g,
-        draggedNode: undefined,
-      }));
-    }
-
-    !graphState.config.staticGraph &&
-      graphState.config.automaticRearrangeAfterDropNode &&
-      graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
-  };
-
   // hover节点设置高亮节点
   const _setNodeHighlightedValue = (id: string, value = false) => {
     const { nodes, links, config } = graphState;
@@ -157,16 +100,82 @@ const GraphV2: FC<GraphProps> = props => {
     });
   };
 
-  // 生效D3拖拽效果
-  const _graphNodeDragConfig = () => {
-    const customNodeDrag = d3Drag()
+  function drag() {
+    const _onDragStart = () => {
+      isDraggingNode.current = true;
+      pauseSimulation();
+      if (graphState.enableFocusAnimation) {
+        setGraphState(g => ({
+          ...g,
+          enableFocusAnimation: false,
+        }));
+      }
+    };
+
+    const _onDragMove = ev => {
+      const { subject, dx, dy } = ev;
+      const { index } = subject;
+      const id = graphState.d3Nodes[index].id;
+
+      if (!graphState.config.staticGraph) {
+        // this is where d3 and react bind
+        const draggedNode = graphState.nodes[id];
+
+        draggedNode.oldX = draggedNode.x;
+        draggedNode.oldY = draggedNode.y;
+
+        const newX = draggedNode.x + dx;
+        const newY = draggedNode.y + dy;
+        const shouldUpdateNode = !graphState.config.bounded || isPositionInBounds({ x: newX, y: newY }, graphState);
+
+        if (shouldUpdateNode) {
+          draggedNode.x = newX;
+          draggedNode.y = newY;
+
+          // set nodes fixing coords fx and fy
+          draggedNode["fx"] = draggedNode.x;
+          draggedNode["fy"] = draggedNode.y;
+          setGraphState(g => ({
+            ...g,
+            draggedNode,
+          }));
+        }
+      }
+    };
+    const _onDragEnd = () => {
+      isDraggingNode.current = false;
+
+      if (graphState.draggedNode) {
+        _onNodePositionChange(graphState.draggedNode);
+        setGraphState(g => ({
+          ...g,
+          draggedNode: undefined,
+        }));
+      }
+
+      !graphState.config.staticGraph &&
+        graphState.config.automaticRearrangeAfterDropNode &&
+        graphState?.simulation?.alphaTarget(graphState?.config?.d3?.alphaTarget).restart();
+    };
+
+    function dragsubject(event) {
+      const item = graphState.simulation.find(event.x, event.y);
+
+      return item;
+    }
+
+    return d3Drag()
+      .subject(dragsubject)
       .on("start", _onDragStart)
       .on("drag", _onDragMove)
       .on("end", _onDragEnd);
+  }
 
-    d3Select(`#${id}-${CONST.GRAPH_WRAPPER_ID}`)
+  // 生效D3拖拽效果
+  const _graphNodeDragConfig = () => {
+    d3Select(`#${CONTAINER_ID}`)
       .selectAll(".node")
-      .call(customNodeDrag);
+      .call(drag());
   };
 
   // 初始化图表(核心)

@@ -6,7 +6,7 @@ const ReactD3Demo = () => {
 
   function drag() {
     function dragstarted(event, d) {
-      console.log("this", { event, d });
+      console.log("this", this, d);
       d3.select(this)
         .raise()
         .attr("stroke", "black");
@@ -43,12 +43,17 @@ const ReactD3Demo = () => {
       y: Math.random() * (height - radius * 2) + radius,
     }));
 
+    const _circles = svg
+      .selectAll("circle")
+      .data(circles)
+      .join("circle");
+
     svg
       .selectAll("circle")
       .data(circles)
       .join("circle")
-      .attr("cx", d => d.x)
-      .attr("cy", d => d.y)
+      // .attr("cx", d => d.x)
+      // .attr("cy", d => d.y)
       .attr("r", radius)
       .attr("fill", (d, i) => d3.schemeCategory10[i % 10])
       .call(drag());

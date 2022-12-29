@@ -89,8 +89,6 @@ function _initializeLinks(graphLinks, config) {
 
     links[source][target] = value;
 
-    console.log({ config });
-
     if (!config.directed) {
       links[target][source] = value;
     }
@@ -109,7 +107,7 @@ function _initializeLinks(graphLinks, config) {
  * @memberof Graph/helper
  */
 function initializeNodes(graphNodes) {
-  let nodes = {};
+  const nodes = {};
   const n = graphNodes.length;
 
   for (let i = 0; i < n; i++) {
@@ -410,7 +408,7 @@ function initializeGraphState({ data, id, config }, state) {
     };
   }
 
-  let newConfig = { ...merge(DEFAULT_CONFIG, config || {}) },
+  const newConfig = { ...merge(DEFAULT_CONFIG, config || {}) },
     links = _initializeLinks(graph.links, newConfig), // matrix of graph connections
     nodes = _tagOrphanNodes(initializeNodes(graph.nodes), links);
   const { nodes: d3Nodes, links: d3Links } = graph;
