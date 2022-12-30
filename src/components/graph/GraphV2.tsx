@@ -2,8 +2,9 @@ import React, { FC, useEffect, useState, useRef } from "react";
 import { GraphConfig, GraphProps, GraphState } from "src/types/graph";
 import { drag as d3Drag } from "d3-drag";
 import { forceLink as d3ForceLink } from "d3-force";
-import { select as d3Select, selectAll as d3SelectAll, event as d3Event } from "d3-selection";
+import { select as d3Select, selectAll as d3SelectAll } from "d3-selection";
 import { zoom as d3Zoom, ZoomBehavior } from "d3-zoom";
+import * as d3 from "d3";
 
 import CONST from "./graph.const";
 import DEFAULT_CONFIG from "./graph.config";
@@ -30,42 +31,34 @@ const GraphV2: FC<GraphProps> = props => {
   const focusAnimationTimeout = useRef<any>(null);
   const isDraggingNode = useRef<boolean>(false);
 
+  const WRAPPER_ID = `${id}-${CONST.GRAPH_WRAPPER_ID}`;
+  const CONTAINER_ID = `${id}-${CONST.GRAPH_CONTAINER_ID}`;
+
   const debounceZoomChange = () => {
     if (!onZoomChange) return;
     debounce(onZoomChange, 100);
   };
 
-  const setZoomEvent = () => {
-    const transform = d3Event.transform;
-    d3SelectAll(`#${id}-${CONST.GRAPH_CONTAINER_ID}`).attr("transform", transform);
-
-    // FixBug: stop transforming when panAndZoom is false
-    if (config.panAndZoom) {
-      setGraphState(g => ({
-        ...g,
-        transform,
-      }));
-    }
-  };
-
   const setZoomConfig = () => {
-    const selector = d3Select(`#${id}-${CONST.GRAPH_WRAPPER_ID}`);
+    const wrapperSelector = d3Select(`#${WRAPPER_ID}`);
+    const containerSelector = d3SelectAll(`#${CONTAINER_ID}`);
 
     const zoomObject: ZoomBehavior<any, any> = d3Zoom().scaleExtent([config.minZoom, config.maxZoom]);
 
     if (!config.freezeAllDragEvents) {
-      zoomObject.on("zoom", setZoomEvent);
+      zoomObject.on("zoom", ({ transform }) => {
+        // FixBug: stop transforming when panAndZoom is false
+        if (config.panAndZoom) {
+          setGraphState(g => ({
+            ...g,
+            transform,
+          }));
+        }
+        containerSelector.attr("transform", transform);
+      });
     }
 
-    // FixMe: 这里会出现 initialZoom 失效bug
-    // 大概原因可能和 focusedNodeId 一致：图表未绘制出来 然后无法进行放大缩小
-    // if (config.initialZoom !== null) {
-    //   zoomObject.scaleTo(selector, config.initialZoom);
-    // }
-
-    // avoid double click on graph to trigger zoom
-    // for more details consult: https://github.com/danielcaldas/react-d3-graph/pull/202
-    selector.call(zoomObject).on("dblclick.zoom", null);
+    wrapperSelector.call(zoomObject).on("dblclick.zoom", null);
   };
 
   // 设置D3 Link 保证图表以 force-layout 展示
@@ -92,6 +85,7 @@ const GraphV2: FC<GraphProps> = props => {
   };
 
   const _onDragMove = (ev, index, nodeList) => {
+    console.log({ ev, index, nodeList });
     const id = nodeList[index].id;
 
     if (!graphState.config.staticGraph) {
@@ -344,10 +338,10 @@ const GraphV2: FC<GraphProps> = props => {
   const containerProps = _generateFocusAnimationProps();
 
   return (
-    <div id={`${id}-${CONST.GRAPH_WRAPPER_ID}`}>
+    <div id={WRAPPER_ID}>
       <svg name={`svg-container-${id}`} style={svgStyle}>
         {defs}
-        <g id={`${id}-${CONST.GRAPH_CONTAINER_ID}`} {...containerProps}>
+        <g id={CONTAINER_ID} {...containerProps}>
           {links}
           {nodes}
         </g>
